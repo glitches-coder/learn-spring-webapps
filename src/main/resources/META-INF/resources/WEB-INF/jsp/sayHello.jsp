@@ -39,6 +39,8 @@
 <div class="container">
     <h1>Hello, <span class="highlight">World!</span> 🌍</h1>
     <p>Welcome to your first <strong>JSP</strong> page running on a Java web server.</p>
+    <p>Your username: ${username}</p>
+    <p>Your password: ${password}</p>
 </div>
 </body>
 </html>

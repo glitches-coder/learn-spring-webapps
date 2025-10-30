@@ -82,11 +82,12 @@
 <body>
 <div class="login-container">
     <h2>Login</h2>
-    <form action="login" method="post">
+    <form method="POST">
         <input type="text" name="username" placeholder="Enter username" required>
         <input type="password" name="password" placeholder="Enter password" required>
         <button type="submit">Sign In</button>
     </form>
+    <pre>${message}</pre>
     <div class="footer">
         <p>Don't have an account? <a href="#">Sign up</a></p>
     </div>
