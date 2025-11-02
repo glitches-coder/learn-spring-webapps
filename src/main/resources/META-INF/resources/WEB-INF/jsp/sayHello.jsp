@@ -20,6 +20,15 @@
             padding: 40px 60px;
             text-align: center;
         }
+        .btn-custom-add {
+            background: #2bbd8c;
+            color: white;
+            border-radius: 25px;
+            padding: 10px 18px;
+            font-weight: bold;
+            border: none;
+            text-underline: none;
+        }
         h1 {
             color: #0078d7;
             font-size: 2.5rem;
@@ -41,7 +50,7 @@
     <p>Welcome to your first <strong>JSP</strong> page running on a Java web server.</p>
     <p>Your username: ${username}</p>
     <div>
-        <a href="todos">Manage todos</a>
+        <a href="todos" class="btn-custom-add">Manage todos</a>
     </div>
 </div>
 </body>
