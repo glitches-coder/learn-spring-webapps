@@ -1,0 +1,18 @@
+<%@ page pageEncoding="UTF-8" %>
+<footer class="footer-glass text-center py-3 mt-4">
+    <div class="container">
+        <span class="me-3">
+            <a href="/todos" class="footer-link">🏠 Home</a>
+        </span>
+        <span class="me-3">
+            <a href="/add-todo" class="footer-link">➕ Add Task</a>
+        </span>
+        <span>
+            <a href="/logout" class="footer-link text-danger">🚪 Logout</a>
+        </span>
+
+        <p class="mt-2 small text-muted">
+            © <%= java.time.Year.now() %> TaskApp — Built with 💻 + ☕
+        </p>
+    </div>
+</footer>

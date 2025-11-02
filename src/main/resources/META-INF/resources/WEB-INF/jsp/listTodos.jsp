@@ -4,78 +4,16 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="/css/navbar.css">
+        <link rel="stylesheet" href="/css/list-todo.css">
         <link rel="stylesheet" href="/webjars/bootstrap/5.1.3/css/bootstrap.min.css">
 
         <title>Your Todos</title>
 
-        <style>
-            body {
-                background: linear-gradient(135deg, #f8e8ff, #dffcf6);
-                font-family: "Poppins", sans-serif;
-            }
-
-            h1 {
-                color: #5e2b97;
-                margin-top: 20px;
-                margin-bottom: 20px;
-                font-weight: 700;
-            }
-
-            .container {
-                padding-top: 30px;
-            }
-
-            table {
-                background: rgba(255, 255, 255, 0.75);
-                backdrop-filter: blur(10px);
-                box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-                border-radius: 12px;
-                overflow: hidden;
-            }
-
-            th {
-                background: #7f3fbf !important;
-                color: #fff;
-                font-size: 15px;
-                letter-spacing: 0.5px;
-            }
-
-            th, td {
-                padding: 14px !important;
-            }
-
-            tr:hover {
-                background: rgba(127, 63, 191, 0.06);
-            }
-
-            .btn-custom-add {
-                background: #2bbd8c;
-                color: white;
-                border-radius: 25px;
-                padding: 10px 18px;
-                font-weight: bold;
-                border: none;
-                text-underline: none;
-                under
-            }
-
-            .btn-custom-add:hover {
-                background: #249c72;
-                color: #fff;
-            }
-
-            .badge-done {
-                background: #2ecc71;
-            }
-
-            .badge-pending {
-                background: #e73257;
-            }
-        </style>
     </head>
-
+    
     <body>
-
+        <%@include file="common/navigation.jspf"%>
         <div class="container">
             <h1 class="text-center">✨ Your Todo List</h1>
 
@@ -122,6 +60,7 @@
                 </a>
             </div>
         </div>
+        <%@include file="common/footer.jspf"%>
         <script src="/webjars/jquery/3.6.0/jquery.min.js"></script>
         <script src="/webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
     </body>

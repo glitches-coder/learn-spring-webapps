@@ -3,6 +3,8 @@ package com.productivity.springboot.myfirstwebapp.todo;
 import jakarta.validation.Valid;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -26,7 +28,8 @@ public class TodoController {
 
     @RequestMapping("todos")
     public ModelAndView listAllTodos(ModelMap model) {
-        var todos = todoService.findByUsername("Aditya");
+        String username = model.get("username").toString();
+        var todos = todoService.findByUsername(username);
         model.put("todos", todos);
         mav.setViewName("listTodos");
         return mav;
@@ -34,7 +37,7 @@ public class TodoController {
 
     @RequestMapping(value = "add-todo", method = RequestMethod.GET)
     public ModelAndView showNewTodo(ModelMap model) {
-        Todo todo = new Todo(0, (String) model.get("username"), "", false, LocalDate.now());
+        Todo todo = new Todo(0, getLoggedInUsername(model), "", false, LocalDate.now());
         model.put("todo", todo);
         mav.setViewName("addTodo");
         return mav;
@@ -45,9 +48,14 @@ public class TodoController {
         if(bindingResult.hasErrors()) {
             return new ModelAndView("addTodo");
         }
-        todoService.addTodo((String) model.get("username"), todo.getDescription(), todo.getTargetDate(), false);
+        todoService.addTodo(getLoggedInUsername(model), todo.getDescription(), todo.getTargetDate(), false);
         mav.setViewName("redirect:todos");
         return mav;
+    }
+
+    private static String getLoggedInUsername(ModelMap model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        return authentication.getName();
     }
 
     @RequestMapping("delete-todo")
@@ -70,7 +78,7 @@ public class TodoController {
         if(bindingResult.hasErrors()) {
             return new ModelAndView("addTodo");
         }
-        String username = (String) model.get("username");
+        String username = getLoggedInUsername(model);
         todo.setUsername(username);
         todoService.updateTodo(todo);
         mav.setViewName("redirect:todos");
